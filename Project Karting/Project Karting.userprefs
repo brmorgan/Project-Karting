@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/__Scripts/Kart.cs">
+    <Files>
+      <File FileName="Assets/__Scripts/Kart.cs" Line="90" Column="45" />
+      <File FileName="../../../Google Drive/2dcControler/Assets/__Scripts/twoDCharacterController.js" Line="59" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
