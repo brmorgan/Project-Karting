@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{FBBACD3E-8E39-D4D6-DABD-5A3D407A07DD}") = "Project Karting", "Assembly-CSharp.csproj", "{D41E0D09-0AF5-0341-7AF9-ECA4825D7B56}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project Karting", "Assembly-CSharp.csproj", "{D41E0D09-0AF5-0341-7AF9-ECA4825D7B56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +36,4 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
-
 EndGlobal
