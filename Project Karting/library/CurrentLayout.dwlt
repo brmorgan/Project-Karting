@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 26
+  controlID: 115
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -203,12 +203,12 @@ MonoBehaviour:
     height: 676
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -307,7 +307,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoom: 0
     m_UniformScale: 1
     m_UpDirection: 1
@@ -366,9 +366,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 7e280000
-    m_LastClickedID: 10366
-    m_ExpandedIDs: 08e1fcff96fbffff000000007e280000
+    m_SelectedIDs: 76010000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 96fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -424,9 +424,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 39.510914, y: -21.984697, z: -17.642916}
+    m_Target: {x: 16.572948, y: -2.7641923, z: -2.122394}
     speed: 2
-    m_Value: {x: 39.510914, y: -21.984697, z: -17.642916}
+    m_Value: {x: 16.572948, y: -2.7641923, z: -2.122394}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -450,13 +450,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.13127184, y: 0.80827576, z: -0.1967801, w: 0.53919905}
+    m_Target: {x: 0.06754486, y: 0.805936, z: -0.09375696, w: 0.58061576}
     speed: 2
-    m_Value: {x: 0.13127184, y: 0.80827576, z: -0.1967801, w: 0.53919905}
+    m_Value: {x: 0.06754486, y: 0.805936, z: -0.09375696, w: 0.58061576}
   m_Size:
-    m_Target: 55.57891
+    m_Target: 21.01556
     speed: 2
-    m_Value: 55.57891
+    m_Value: 21.01556
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -506,18 +506,19 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders: []
+    m_Folders:
+    - assets/__Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - assets/__Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Documents\github\Project-Karting\Project Karting
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
+    m_SelectedIDs: b6270000
+    m_LastClickedID: 10166
     m_ExpandedIDs: 000000009a27000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
