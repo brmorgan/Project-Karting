@@ -7,26 +7,22 @@ public class Kart : MonoBehaviour
 	public float turnSpeed = 10;
 	public float accFactor = 10;
 	public float currentSpeed = 0;
-	public bool isDrifting = false;
-
 	private Vector3 currentDir;
 	//private static float rollingTime = 1;
 	//private float timeLeft = 0;
-	private float MAXSPEED = 50;
 	void Update()
 	{
 		// Pull in information from the Input class
-		float ySpin = Input.GetAxis ("Horizontal");							// -1 (left) to 1 (right)
-		//float zAxis = Input.GetAxis ("Vertical");							// 1
+		float ySpin = Input.GetAxis ("Horizontal");									// 1
+		//float zAxis = Input.GetAxis ("Vertical");									// 1
 		bool gasButtonPressed = Input.GetButton ("Gas");
 		bool gasButtonUp = Input.GetButtonUp ("Gas");
-		bool hopButtonDown = Input.GetButtonDown("Hop");
-		bool hopButtonUp = Input.GetButtonUp ("Hop");
+		
 		// Ask the engine for current Position and Direction vectors
 		Vector3 myPos = transform.position;
 		Vector3 myDir = transform.forward;
 
-		// if the gas button is down or held
+		// if the gas button is down
 		if (gasButtonPressed) 
 		{
 			// If currentSpeed + amount to be accellerated is less than top speed, then that is the new current speed
@@ -37,32 +33,9 @@ public class Kart : MonoBehaviour
 			// If the button is not pushed down, slow down to a stop.
 			currentSpeed = (currentSpeed - accFactor * Time.deltaTime > 0 ? currentSpeed - accFactor * Time.deltaTime : 0);
 		}
-
-		// if the hop button is down
-		if (hopButtonDown) 
-		{
-			// Send the current speed straight up for this frame
-			// Increase turning capability
-			// Reduce Top Speed
-			myPos.y += currentSpeed * Time.deltaTime;
-			isDrifting = true;
-			turnSpeed += 1;
-			topSpeed -= topSpeed / 5;
-		}
-		else if (hopButtonUp) // When the hop button is released
-		{
-			// Revert turn speed to default
-			// Revert top speed to default
-			isDrifting = false;
-			turnSpeed -= 1;
-			topSpeed = MAXSPEED;
-		}
-
 		// Calculate the change in position in each direction
-		myPos.x += myDir.x * currentSpeed * Time.deltaTime;
-		//myPos.y += myDir.y * currentSpeed * Time.deltaTime;
 		myPos.z += myDir.z * currentSpeed * Time.deltaTime;
-
+		myPos.x += myDir.x * currentSpeed * Time.deltaTime;
 		// Tell the engine
 		transform.position = myPos;
 
@@ -106,5 +79,12 @@ public class Kart : MonoBehaviour
 			}
 			print ("Triggered: " + go.name);
 		}
+	}
+
+	void AlterSpeed(float newSpeed, float seconds)
+	{
+		// change speed from it's current sate to newSpeed
+		// wait for 'seconds' seconds
+		// change speed back to it's original pace
 	}
 }
