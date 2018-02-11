@@ -1,52 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Kart : MonoBehaviour {
-
-	public float speed = 10;
+public class Kart : MonoBehaviour 
+{
+	public float topSpeed = 50;
 	public float turnSpeed = 10;
-	private static float rollingTime = 1;
-	private float timeLeft = 0;
+	public float accFactor = 10;
+	public float currentSpeed = 0;
+	private Vector3 currentDir;
+	//private static float rollingTime = 1;
+	//private float timeLeft = 0;
 	void Update()
 	{
 		// Pull in information from the Input class
 		float ySpin = Input.GetAxis ("Horizontal");									// 1
 		//float zAxis = Input.GetAxis ("Vertical");									// 1
-		bool zoom = Input.GetButton ("Gas");
-		bool up = Input.GetButtonUp ("Gas");
+		bool gasButtonPressed = Input.GetButton ("Gas");
+		bool gasButtonUp = Input.GetButtonUp ("Gas");
 		
-		// Change transform.position based on the axes
-		Vector3 pos = transform.position;
+		// Ask the engine for current Position and Direction vectors
+		Vector3 myPos = transform.position;
+		Vector3 myDir = transform.forward;
 
-		Vector3 dir = transform.forward;
 		// if the gas button is down
-		if (zoom) {
-			//pos.z += speed * Time.deltaTime;
-			pos.x += dir.x * speed * Time.deltaTime * (timeLeft/rollingTime);
-			pos.z += dir.z * speed * Time.deltaTime * (timeLeft/rollingTime);
+		if (gasButtonPressed) 
+		{
+			// If currentSpeed + amount to be accellerated is less than top speed, then that is the new current speed
+			currentSpeed = (currentSpeed + accFactor * Time.deltaTime < topSpeed ? currentSpeed + accFactor * Time.deltaTime : topSpeed);
+		}
+		else
+		{
+			// If the button is not pushed down, slow down to a stop.
+			currentSpeed = (currentSpeed - accFactor * Time.deltaTime > 0 ? currentSpeed - accFactor * Time.deltaTime : 0);
+		}
+		// Calculate the change in position in each direction
+		myPos.z += myDir.z * currentSpeed * Time.deltaTime;
+		myPos.x += myDir.x * currentSpeed * Time.deltaTime;
+		// Tell the engine
+		transform.position = myPos;
 
-			// Rotate the car because it can't "crab".
-			transform.rotation *= Quaternion.Euler (0, ySpin * turnSpeed, 0);
-			if (timeLeft < rollingTime) {
-				timeLeft += (2*Time.deltaTime);
-			}
-		}
-		// if the gas has been released recently
-		if (up || (timeLeft < rollingTime && timeLeft > 0)) {
-			// deccelerate over rollingTime seconds
-			pos.x += dir.x * speed * Time.deltaTime * (timeLeft / rollingTime);
-			pos.z += dir.z * speed * Time.deltaTime * (timeLeft / rollingTime);
-			// Rotate the car because it can't "crab".
-			transform.rotation *= Quaternion.Euler (0, ySpin * turnSpeed, 0);
-			if (timeLeft > 0) {
-				timeLeft -= Time.deltaTime;
-			}
-		}
-		if (timeLeft > rollingTime) {
-			timeLeft -= Time.deltaTime;
-		}
-
-		transform.position = pos;
+		// Rotate the Kart based on stick input
+		transform.rotation *= Quaternion.Euler (0, ySpin * turnSpeed, 0);
 	}
 
 	// This variable holds a reference to the last triggereing GameObject
@@ -59,10 +53,12 @@ public class Kart : MonoBehaviour {
 		// Find the tag of other.gameObject or its parent GameObjects
 		GameObject go = Utils.FindTaggedParent (other.gameObject);
 		// If there is a parent with a tag
-		if (go != null) {
+		if (go != null) 
+		{
 			triggerTime = Time.time;
 			// Make sure it's not the same triggering go as last time.
-			if (go == lastTriggerGo) {
+			if (go == lastTriggerGo) 
+			{
 				// If it is, then has it been long enough since something last made contact?
 				if ((Time.time - triggerTime) > 1f)
 				{
@@ -70,11 +66,13 @@ public class Kart : MonoBehaviour {
 				}
 			}
 			lastTriggerGo = go;
-			if (go.tag == "Boost Pad") {
+			if (go.tag == "Boost Pad") 
+			{
 				// Increment timeLeft to get a speed boost for timeLeft seconds
-				timeLeft = 3;
+				//timeLeft = 3;
 				// AlterSpeed(2, 3);
-			} else if ( go.tag == "Potion")
+			} 
+			else if (go.tag == "Potion")
 			{
 				// make the player sit for 1 second
 				// AlterSpeed(0, 1);
