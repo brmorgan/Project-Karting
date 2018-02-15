@@ -4,14 +4,14 @@ using System.Collections;
 public class Kart : MonoBehaviour 
 {
 	public float topSpeed = 50;
-	public float turnSpeed = 10;
+	public float turnSpeed = 3;
 	public float accFactor = 10;
 	public float currentSpeed = 0;
+
 	public bool isDrifting;
 	private Vector3 currentDir;
-	//private static float rollingTime = 1;
-	//private float timeLeft = 0;
 	private float MAXSPEED = 50;
+
 	void Update()
 	{
 		// Pull in information from the Input class
@@ -21,7 +21,10 @@ public class Kart : MonoBehaviour
 		bool gasButtonUp = Input.GetButtonUp ("Gas");
 		bool hopButtonDown = Input.GetButtonDown("Hop");
 		bool hopButtonUp = Input.GetButtonUp ("Hop");
-		
+
+		// Rotate the Kart based on stick input
+		//transform.rotation *= Quaternion.Euler (0, ySpin * turnSpeed, 0);
+
 		// Ask the engine for current Position and Direction vectors
 		Vector3 myPos = transform.position;
 		Vector3 myDir = transform.forward;
@@ -64,8 +67,8 @@ public class Kart : MonoBehaviour
 		// Tell the engine
 		transform.position = myPos;
 
-		// Rotate the Kart based on stick input
-		transform.rotation *= Quaternion.Euler (0, ySpin * turnSpeed, 0);
+		// Rotate the object based on how far the analog stick is pushed. Also, can't turn if you're not moving
+		transform.Rotate (new Vector3(0, ySpin * turnSpeed, 0) * currentSpeed * Time.deltaTime);
 	}
 
 	// This variable holds a reference to the last triggereing GameObject
