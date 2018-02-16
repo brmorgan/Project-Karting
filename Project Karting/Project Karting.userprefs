@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\__Scripts\Kart.cs">
     <Files>
-      <File FileName="Assets\__Scripts\Kart.cs" Line="8" Column="28" />
+      <File FileName="Assets\__Scripts\Kart.cs" Line="80" Column="91" />
+      <File FileName="assets\__Scripts\Kart_Model.cs" Line="24" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
